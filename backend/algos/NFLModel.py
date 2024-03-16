@@ -82,7 +82,7 @@ class NFLModel:
     def apiPredictAll(self):
         load_dotenv()
 
-        secret_key = os.getenv('API_KEY')
+        secret_key = ('03563f6d70433862cb1a68a6ff734500')
         # Replace this URL with the actual API URL you want to call
         api_url = f"https://api.the-odds-api.com/v4/sports/americanfootball_nfl/odds/?apiKey={secret_key}&regions=us&markets=h2h,spreads,totals&oddsFormat=decimal&bookmakers=fanduel"
         
