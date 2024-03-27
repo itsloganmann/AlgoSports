@@ -94,7 +94,7 @@ export const submitBets = () => (dispatch, getState) => {
     const promiseBets = bets.map(bet => {
         const requestData = {
             method: "POST",
-            url:"https://git.heroku.com/shielded-citadel-74034.git/api/bets",
+            url:"https://shielded-citadel-74034-9a7784b40088.herokuapp.com/api/bets",
             headers: {
               Authorization: 'Bearer ' + authToken
             },

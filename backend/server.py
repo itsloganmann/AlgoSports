@@ -207,4 +207,4 @@ scheduler.add_job(scheduled_task_job, 'cron', hour=11, minute=30)
      
 # Running app
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=5000)1.26.4
