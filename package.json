@@ -6,6 +6,6 @@
     "node": "18.x"
   },
   "scripts": {
-    "heroku-postbuild": "cd frontend && npm install --legacy-peer-deps && npm run build"
+  "heroku-postbuild": "cd frontend && npm install --legacy-peer-deps && npm run build"
   }
 }
