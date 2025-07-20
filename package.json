@@ -6,6 +6,7 @@
     "node": "18.x"
   },
   "scripts": {
+  "start": "gunicorn --chdir backend app:app",
   "heroku-postbuild": "cd frontend && npm install --legacy-peer-deps && npm run build"
   }
 }
