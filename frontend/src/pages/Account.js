@@ -94,7 +94,7 @@ function Account() {
 
   axios({
     method: "GET",
-    url: "https://sb-backend-6409fb97857a.herokuapp.com/api/account",
+    url: process.env.REACT_APP_API_URL + "/api/account",
     headers: {
       Authorization: 'Bearer ' + authToken,
     },

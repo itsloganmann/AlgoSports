@@ -72,7 +72,7 @@ function SignUp() {
 
       axios({
         method: "POST",
-        url:"https://sb-backend-6409fb97857a.herokuapp.com/api/signup",
+        url: process.env.REACT_APP_API_URL + "/api/signup",
         data:{
             username: formData.username,
             first_name: formData.first_name,

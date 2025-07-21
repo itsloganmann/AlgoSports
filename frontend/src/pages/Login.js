@@ -37,7 +37,7 @@ function Login() {
 
       axios({
         method: "POST",
-        url:"https://sb-backend-6409fb97857a.herokuapp.com/api/token",
+        url: process.env.REACT_APP_API_URL + "/api/token",
         data:{
           username: formData.username,
           password: formData.password

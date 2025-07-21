@@ -43,7 +43,7 @@ const DepositForm = ({ onClose, currentBalance }) => {
     // console.log(`Expected Balance after deposit: ${expectedBalance}`);
     axios({
         method: "PATCH",
-        url:"https://sb-backend-6409fb97857a.herokuapp.com/api/account",
+        url: process.env.REACT_APP_API_URL + "/api/account",
         headers: {
             Authorization: 'Bearer ' + authToken,
           },

@@ -21,7 +21,11 @@ const dispatch = useDispatch();
   function logMeOut() {
     axios({
       method: "POST",
-      url:"https://sb-backend-6409fb97857a.herokuapp.com/api/logout",
+      url: process.env.REACT_APP_API_URL + "/api/logout",
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      }
     })
     .then((response) => {
         dispatch(removeToken())
