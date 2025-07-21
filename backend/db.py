@@ -6,7 +6,9 @@ from dotenv import load_dotenv
 from routes.responses import bad_db_connection
 
 load_dotenv()
-mongo_uri = ("mongodb+srv://logan:G0qi734HSxlZ1LzG@cluster0.mlawufe.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+mongo_uri = os.environ.get("MONGO_URI")
+if not mongo_uri:
+    raise Exception("MONGO_URI environment variable not set. Please set it in your .env file.")
 
 def connect(collection):
     

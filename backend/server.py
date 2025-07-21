@@ -29,7 +29,7 @@ scheduler = BackgroundScheduler()
 scheduler.start()
 
 ### Login Session/Authentication management
-secret_key = ('abcdefg')
+secret_key = os.environ.get("JWT_SECRET_KEY", "changeme")
 app.config["JWT_SECRET_KEY"] = secret_key
 app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(hours=1)
 jwt = JWTManager(app)
