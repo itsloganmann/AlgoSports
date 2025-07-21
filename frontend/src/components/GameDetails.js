@@ -5,8 +5,6 @@ import { Button, Grid, Typography } from '@mui/material';
 import { styled } from '@mui/system';
 
 // Components
-import * as NFLLogos from 'react-nfl-logos';
-import * as NBALogos from 'react-nba-logos';
 import LoadingIndicator from '../util/LoadingIndicator';
 import BetBox from "./BetBox"
 import TeamSeparator from './TeamSeparator';
@@ -52,84 +50,84 @@ function formatDate(inputDate) {
   return formattedDate;
 }
 
-const teamToComponent = {
-  'San Francisco 49ers': NFLLogos.SF,
-  'Arizona Cardinals': NFLLogos.ARI,
-  'Atlanta Falcons': NFLLogos.ATL,
-  'Baltimore Ravens': NFLLogos.BAL,
-  'Buffalo Bills': NFLLogos.BUF,
-  'Carolina Panthers': NFLLogos.CAR,
-  'Chicago Bears': NFLLogos.CHI,
-  'Cincinnati Bengals': NFLLogos.CIN,
-  'Cleveland Browns': NFLLogos.CLE,
-  'Dallas Cowboys': NFLLogos.DAL,
-  'Denver Broncos': NFLLogos.DEN,
-  'Detroit Lions': NFLLogos.DET,
-  'Green Bay Packers': NFLLogos.GB,
-  'Houston Texans': NFLLogos.HOU,
-  'Indianapolis Colts': NFLLogos.IND,
-  'Jacksonville Jaguars': NFLLogos.JAX,
-  'Kansas City Chiefs': NFLLogos.KC,
-  'Los Angeles Chargers': NFLLogos.LAC,
-  'Los Angeles Rams': NFLLogos.LAR,
-  'Las Vegas Raiders': NFLLogos.LV,
-  'Miami Dolphins': NFLLogos.MIA,
-  'Minnesota Vikings': NFLLogos.MIN,
-  'New England Patriots': NFLLogos.NE,
-  'New Orleans Saints': NFLLogos.NO,
-  'New York Giants': NFLLogos.NYG,
-  'New York Jets': NFLLogos.NYJ,
-  'Philadelphia Eagles': NFLLogos.PHI,
-  'Pittsburgh Steelers': NFLLogos.PIT,
-  'Seattle Seahawks': NFLLogos.SEA,
-  'Tampa Bay Buccaneers': NFLLogos.TB,
-  'Tennessee Titans': NFLLogos.TEN,
-  'Washington Commanders': NFLLogos.WAS,
-  'Atlanta Hawks': NBALogos.ATL,
-  'Brooklyn Nets': NBALogos.BKN,
-  'Boston Celtics': NBALogos.BOS,
-  'Charlotte Hornets': NBALogos.CHA,
-  'Chicago Bulls': NBALogos.CHI,
-  'Cleveland Cavaliers': NBALogos.CLE,
-  'Dallas Mavericks': NBALogos.DAL,
-  'Denver Nuggets': NBALogos.DEN,
-  'Detroit Pistons': NBALogos.DET,
-  'Golden State Warriors': NBALogos.GSW,
-  'Houston Rockets': NBALogos.HOU,
-  'Indiana Pacers': NBALogos.IND,
-  'Los Angeles Clippers': NBALogos.LAC,
-  'Los Angeles Lakers': NBALogos.LAL,
-  'Memphis Grizzlies': NBALogos.MEM,
-  'Miami Heat': NBALogos.MIA,
-  'Milwaukee Bucks': NBALogos.MIL,
-  'Minnesota Timberwolves': NBALogos.MIN,
-  'New Orleans Pelicans': NBALogos.NOP,
-  'New York Knicks': NBALogos.NYK,
-  'Oklahoma City Thunder': NBALogos.OKC,
-  'Orlando Magic': NBALogos.ORL,
-  'Philadelphia 76ers': NBALogos.PHI,
-  'Phoenix Suns': NBALogos.PHX,
-  'Portland Trail Blazers': NBALogos.POR,
-  'Sacramento Kings': NBALogos.SAC,
-  'San Antonio Spurs': NBALogos.SAS,
-  'Toronto Raptors': NBALogos.TOR,
-  'Utah Jazz': NBALogos.UTA,
-  'Washington Wizards': NBALogos.WAS,
+// NFL team logo URLs (replace with your preferred source or CDN)
+const nflLogoUrls = {
+  'San Francisco 49ers': 'https://loodibee.com/wp-content/uploads/nfl-san-francisco-49ers-team-logo-2-300x300.png',
+  'Arizona Cardinals': 'https://loodibee.com/wp-content/uploads/nfl-arizona-cardinals-team-logo-2-300x300.png',
+  'Atlanta Falcons': 'https://loodibee.com/wp-content/uploads/nfl-atlanta-falcons-team-logo-2-300x300.png',
+  'Baltimore Ravens': 'https://loodibee.com/wp-content/uploads/nfl-baltimore-ravens-team-logo-2-300x300.png',
+  'Buffalo Bills': 'https://loodibee.com/wp-content/uploads/nfl-buffalo-bills-team-logo-2-300x300.png',
+  'Carolina Panthers': 'https://loodibee.com/wp-content/uploads/nfl-carolina-panthers-team-logo-2-300x300.png',
+  'Chicago Bears': 'https://loodibee.com/wp-content/uploads/nfl-chicago-bears-team-logo-2-300x300.png',
+  'Cincinnati Bengals': 'https://loodibee.com/wp-content/uploads/nfl-cincinnati-bengals-team-logo-2-300x300.png',
+  'Cleveland Browns': 'https://loodibee.com/wp-content/uploads/nfl-cleveland-browns-team-logo-2-300x300.png',
+  'Dallas Cowboys': 'https://loodibee.com/wp-content/uploads/nfl-dallas-cowboys-team-logo-2-300x300.png',
+  'Denver Broncos': 'https://loodibee.com/wp-content/uploads/nfl-denver-broncos-team-logo-2-300x300.png',
+  'Detroit Lions': 'https://loodibee.com/wp-content/uploads/nfl-detroit-lions-team-logo-2-300x300.png',
+  'Green Bay Packers': 'https://loodibee.com/wp-content/uploads/nfl-green-bay-packers-team-logo-2-300x300.png',
+  'Houston Texans': 'https://loodibee.com/wp-content/uploads/nfl-houston-texans-team-logo-2-300x300.png',
+  'Indianapolis Colts': 'https://loodibee.com/wp-content/uploads/nfl-indianapolis-colts-team-logo-2-300x300.png',
+  'Jacksonville Jaguars': 'https://loodibee.com/wp-content/uploads/nfl-jacksonville-jaguars-team-logo-2-300x300.png',
+  'Kansas City Chiefs': 'https://loodibee.com/wp-content/uploads/nfl-kansas-city-chiefs-team-logo-2-300x300.png',
+  'Los Angeles Chargers': 'https://loodibee.com/wp-content/uploads/nfl-los-angeles-chargers-team-logo-2-300x300.png',
+  'Los Angeles Rams': 'https://loodibee.com/wp-content/uploads/nfl-los-angeles-rams-team-logo-2-300x300.png',
+  'Las Vegas Raiders': 'https://loodibee.com/wp-content/uploads/nfl-las-vegas-raiders-team-logo-2-300x300.png',
+  'Miami Dolphins': 'https://loodibee.com/wp-content/uploads/nfl-miami-dolphins-team-logo-2-300x300.png',
+  'Minnesota Vikings': 'https://loodibee.com/wp-content/uploads/nfl-minnesota-vikings-team-logo-2-300x300.png',
+  'New England Patriots': 'https://loodibee.com/wp-content/uploads/nfl-new-england-patriots-team-logo-2-300x300.png',
+  'New Orleans Saints': 'https://loodibee.com/wp-content/uploads/nfl-new-orleans-saints-team-logo-2-300x300.png',
+  'New York Giants': 'https://loodibee.com/wp-content/uploads/nfl-new-york-giants-team-logo-2-300x300.png',
+  'New York Jets': 'https://loodibee.com/wp-content/uploads/nfl-new-york-jets-team-logo-2-300x300.png',
+  'Philadelphia Eagles': 'https://loodibee.com/wp-content/uploads/nfl-philadelphia-eagles-team-logo-2-300x300.png',
+  'Pittsburgh Steelers': 'https://loodibee.com/wp-content/uploads/nfl-pittsburgh-steelers-team-logo-2-300x300.png',
+  'Seattle Seahawks': 'https://loodibee.com/wp-content/uploads/nfl-seattle-seahawks-team-logo-2-300x300.png',
+  'Tampa Bay Buccaneers': 'https://loodibee.com/wp-content/uploads/nfl-tampa-bay-buccaneers-team-logo-2-300x300.png',
+  'Tennessee Titans': 'https://loodibee.com/wp-content/uploads/nfl-tennessee-titans-team-logo-2-300x300.png',
+  'Washington Commanders': 'https://loodibee.com/wp-content/uploads/nfl-washington-commanders-team-logo-2-300x300.png',
+};
+
+// NBA team logo URLs (replace with your preferred source or CDN)
+const nbaLogoUrls = {
+  'Atlanta Hawks': 'https://loodibee.com/wp-content/uploads/nba-atlanta-hawks-logo-300x300.png',
+  'Brooklyn Nets': 'https://loodibee.com/wp-content/uploads/nba-brooklyn-nets-logo-300x300.png',
+  'Boston Celtics': 'https://loodibee.com/wp-content/uploads/nba-boston-celtics-logo-300x300.png',
+  'Charlotte Hornets': 'https://loodibee.com/wp-content/uploads/nba-charlotte-hornets-logo-300x300.png',
+  'Chicago Bulls': 'https://loodibee.com/wp-content/uploads/nba-chicago-bulls-logo-300x300.png',
+  'Cleveland Cavaliers': 'https://loodibee.com/wp-content/uploads/nba-cleveland-cavaliers-logo-300x300.png',
+  'Dallas Mavericks': 'https://loodibee.com/wp-content/uploads/nba-dallas-mavericks-logo-300x300.png',
+  'Denver Nuggets': 'https://loodibee.com/wp-content/uploads/nba-denver-nuggets-logo-300x300.png',
+  'Detroit Pistons': 'https://loodibee.com/wp-content/uploads/nba-detroit-pistons-logo-300x300.png',
+  'Golden State Warriors': 'https://loodibee.com/wp-content/uploads/nba-golden-state-warriors-logo-300x300.png',
+  'Houston Rockets': 'https://loodibee.com/wp-content/uploads/nba-houston-rockets-logo-300x300.png',
+  'Indiana Pacers': 'https://loodibee.com/wp-content/uploads/nba-indiana-pacers-logo-300x300.png',
+  'Los Angeles Clippers': 'https://loodibee.com/wp-content/uploads/nba-la-clippers-logo-300x300.png',
+  'Los Angeles Lakers': 'https://loodibee.com/wp-content/uploads/nba-la-lakers-logo-300x300.png',
+  'Memphis Grizzlies': 'https://loodibee.com/wp-content/uploads/nba-memphis-grizzlies-logo-300x300.png',
+  'Miami Heat': 'https://loodibee.com/wp-content/uploads/nba-miami-heat-logo-300x300.png',
+  'Milwaukee Bucks': 'https://loodibee.com/wp-content/uploads/nba-milwaukee-bucks-logo-300x300.png',
+  'Minnesota Timberwolves': 'https://loodibee.com/wp-content/uploads/nba-minnesota-timberwolves-logo-300x300.png',
+  'New Orleans Pelicans': 'https://loodibee.com/wp-content/uploads/nba-new-orleans-pelicans-logo-300x300.png',
+  'New York Knicks': 'https://loodibee.com/wp-content/uploads/nba-new-york-knicks-logo-300x300.png',
+  'Oklahoma City Thunder': 'https://loodibee.com/wp-content/uploads/nba-oklahoma-city-thunder-logo-300x300.png',
+  'Orlando Magic': 'https://loodibee.com/wp-content/uploads/nba-orlando-magic-logo-300x300.png',
+  'Philadelphia 76ers': 'https://loodibee.com/wp-content/uploads/nba-philadelphia-76ers-logo-300x300.png',
+  'Phoenix Suns': 'https://loodibee.com/wp-content/uploads/nba-phoenix-suns-logo-300x300.png',
+  'Portland Trail Blazers': 'https://loodibee.com/wp-content/uploads/nba-portland-trail-blazers-logo-300x300.png',
+  'Sacramento Kings': 'https://loodibee.com/wp-content/uploads/nba-sacramento-kings-logo-300x300.png',
+  'San Antonio Spurs': 'https://loodibee.com/wp-content/uploads/nba-san-antonio-spurs-logo-300x300.png',
+  'Toronto Raptors': 'https://loodibee.com/wp-content/uploads/nba-toronto-raptors-logo-300x300.png',
+  'Utah Jazz': 'https://loodibee.com/wp-content/uploads/nba-utah-jazz-logo-300x300.png',
+  'Washington Wizards': 'https://loodibee.com/wp-content/uploads/nba-washington-wizards-logo-300x300.png',
 };
 
 
 function TeamComponent({ teamName }) {
-  // Check if teamName is a valid key in the mapping
-  if (teamName in teamToComponent) {
-    const Component = teamToComponent[teamName];
-
-    return (
-      <Suspense fallback={<LoadingIndicator />}>
-        <Component />
-      </Suspense>
-    );
+  // NFL teams use nflLogoUrls, NBA teams use nbaLogoUrls
+  if (nflLogoUrls[teamName]) {
+    return <img src={nflLogoUrls[teamName]} alt={teamName + ' logo'} style={{ width: 50, height: 50 }} />;
+  } else if (nbaLogoUrls[teamName]) {
+    return <img src={nbaLogoUrls[teamName]} alt={teamName + ' logo'} style={{ width: 50, height: 50 }} />;
   } else {
-    // Handle the case where teamName is not in the mapping
     return <div>Invalid team name</div>;
   }
 }
